@@ -55,6 +55,8 @@ To use GMS, run the following command:
 gms <command> [options]
 ```
 **Demo**
+-----
+
 ![](https://github.com/user-attachments/assets/91cfdb71-384e-42e0-820e-03dc6344e327)
 
 **Available Commands**
