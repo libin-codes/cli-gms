@@ -38,7 +38,7 @@ cli-gms runs on Linux, macOS, and Windows. Spotidex requires Python 3.9.5 or abo
 Install GMS via pipx:
 
 ```console
-pipx install cli-gms
+pipx install gms-cli
 ```
 
 if you dont have pipx installed then install via: 
