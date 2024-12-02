@@ -169,12 +169,13 @@ def manage_members():
                 for member in database.retrive_members()
             ],
         ).ask()
+        member_list = [name.split('.')[1][1:] for name in member_list]
         clear_display(1)
         panel = Panel(
             "\n".join(member_list), expand=False, title=f"{len(member_list)} Selections"
         )
         console.print(panel)
-        if qt.confirm("Are you sure").ask():
+        if member_list and qt.confirm("Are you sure").ask():
             for member in member_list:
                 database.delete_member(member)
 
@@ -342,11 +343,12 @@ def manage_packages():
             ],
         ).ask()
         clear_display(1)
+        packages = [name.split('.')[1][1:] for name in packages]
         panel = Panel(
             "\n".join(packages), expand=False, title=f"{len(packages)} Selections"
         )
         console.print(panel)
-        if qt.confirm("Are you sure").ask():
+        if packages and qt.confirm("Are you sure").ask():
             for package_name in packages:
                 database.delete_package(package_name)
 
@@ -441,7 +443,7 @@ def manage_member_plan(member_id):
     except:
         print("Invalid Member ID")
         return
-    menu_choices = ["Exit"]
+    menu_choices = []
 
     if (
         list(member_plan["current_member_plan"].values())
@@ -456,7 +458,7 @@ def manage_member_plan(member_id):
     if member_plan["amount_pending"] not in [0, None]:
         menu_choices.append("Make Payment")
 
-    menu = qt.select("Manage Member Plan", qmark="", choices=menu_choices).ask()
+    menu = qt.select("Manage Member Plan", qmark="", choices=menu_choices+['Exit']).ask()
 
     clear_display(1)
     print("Option Choose : " + menu)
