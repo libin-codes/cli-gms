@@ -20,4 +20,4 @@ requires = ["poetry-core"]
 build-backend = "poetry.core.masonry.api"
 
 [tool.poetry.scripts]
-gms = "cli_gms.main:gms"
+gms = "gms_cli.main:gms"
